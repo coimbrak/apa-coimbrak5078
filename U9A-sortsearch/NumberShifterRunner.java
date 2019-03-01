@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Kaila Coimbra
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,9 +10,11 @@ import static java.lang.System.*;
 
 public class NumberShifterRunner
 {
-	public static void main( String args[] ) throws IOException
+	public static void main( String args[] )  throws IOException
 	{
-		//add test cases
+		int[] array = {5,7,7,2,1};
+		System.out.println(array);
+		//System.out.println(NumberShifter.makeLucky7Array(5));
 	}
 }
 
