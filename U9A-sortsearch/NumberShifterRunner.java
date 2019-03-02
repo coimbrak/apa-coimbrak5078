@@ -12,9 +12,11 @@ public class NumberShifterRunner
 {
 	public static void main( String args[] )  throws IOException
 	{
-		int[] array = {5,7,7,2,1};
-		System.out.println(array);
-		//System.out.println(NumberShifter.makeLucky7Array(5));
+		int[] newArray = new int[5];
+		newArray = NumberShifter.makeLucky7Array(5);
+		for (int i = 0; i < newArray.length; i++){
+			System.out.println(newArray[i]);
+		}
 	}
 }
 

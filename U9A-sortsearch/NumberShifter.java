@@ -12,8 +12,9 @@ public class NumberShifter
 {
 	public static int[] makeLucky7Array( int size)
 	{
-		int[] array = new int[size];
-		return array;	
+		int[] fillArray = {5,7,7,2,1};
+		shiftEm(fillArray);
+		return fillArray;	
 	}
 
 
