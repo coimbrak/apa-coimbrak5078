@@ -21,7 +21,7 @@ public class ListOddToEven
 	}
 	
 	int start = ray.size() - 1;
-	for (int o = start; int o > oddIndex; o--){
+	for (int o = start; o > oddIndex; o--){
 		if (ray.get(o) % 2 == 0){
 			evenIndex = o;
 			break;

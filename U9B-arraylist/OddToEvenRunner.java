@@ -3,12 +3,14 @@
 //Name - Kaila Coimbra
 //Date - 3/3/19
 
+import java.util.ArrayList;
+
 public class OddToEvenRunner
 {
   public static void main( String args[] )
   {
 	ArrayList<Integer> a;
-	a = new Arraylist<Integer>();
+	a = new ArrayList<Integer>();
 	a.add(2);
         a.add(4);
         a.add(6);
@@ -18,7 +20,7 @@ public class OddToEvenRunner
 	System.out.println(ListOddToEven.go(a));
 
         ArrayList<Integer> b;
-        b = new Arraylist<Integer>();
+        b = new ArrayList<Integer>();
         b.add(32767);
         b.add(70);
         b.add(4);
