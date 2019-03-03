@@ -1,10 +1,10 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Kaila Coimbra
+//Date - 3/3/19
+//Class - AP CSA (Period 4)
+//Lab  - Shape
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,6 +21,10 @@ public class Shape
    public Shape(int x, int y, int wid, int ht, Color col)
    {
 		xPos = x;
+		yPos = y;
+		width = wid;
+		height = ht;
+		color = col;
 		//finish this constructor
    }
 
@@ -29,6 +33,16 @@ public class Shape
    {
       window.setColor(color);
       window.fillRect(xPos, yPos, width, height);
+
+	window.setColor(Color.YELLOW);
+	window.fillRect(100, 300, 200, 200);
+	window.setColor(Color.GREEN);
+	window.fillOval(100, 300, 100, 100);
+	window.setColor(Color.RED);
+	window.drawLine(100, 300, 300, 500);
+	window.drawLine(300, 300, 100, 500);
+	
+
 
       //draw whatever you want
       //    ^
