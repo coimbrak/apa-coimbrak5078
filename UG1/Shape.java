@@ -34,13 +34,19 @@ public class Shape
       window.setColor(color);
       window.fillRect(xPos, yPos, width, height);
 
-	window.setColor(Color.YELLOW);
-	window.fillRect(100, 300, 200, 200);
+                //xPos = 0;
+                //yPos = 0;
+                //width = 0;
+                //height = 0;
+
+
+	//window.setColor(Color.YELLOW);
+	//window.fillRect(xPos + 100,yPos +  300, width + 200, height + 200);
 	window.setColor(Color.GREEN);
-	window.fillOval(100, 300, 100, 100);
+	window.fillOval(xPos + width/4, yPos + height/4, width/2, width/2);
 	window.setColor(Color.RED);
-	window.drawLine(100, 300, 300, 500);
-	window.drawLine(300, 300, 100, 500);
+	window.drawLine(xPos+width, yPos, xPos, yPos + height);
+	window.drawLine(xPos+width, yPos + height, xPos, yPos);
 	
 
 
