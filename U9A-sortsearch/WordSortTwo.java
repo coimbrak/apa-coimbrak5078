@@ -16,17 +16,29 @@ public class WordSortTwo
 		String word = "";
 		int firstIndex = 0;
 		int count = 0;
-		while (lastIndex < sentence.length()){
+		int count2 = 0;
+		
+                for (int i = 0; i < sentence.length(); i++){
+			if (sentence.charAt(i) == ' '){
+				count2++;
+			}
+		}
+           
+		wordRay = new String[count2 + 1];
+
+		for(int n = 0; n < count2; n++){
 			if (lastIndex == -1){
 				break;
 			}
 			lastIndex = sentence.indexOf(" ");
-			word = sentence.substring(firstIndex, lastIndex);
-			sentence = sentence.substring(lastIndex);
-			firstIndex = lastIndex + 1;
-			wordRay[count] = word;	
+			word = sentence.substring(0, lastIndex);
+			sentence = sentence.substring(lastIndex + 1);
+			//firstIndex = lastIndex + 1;
+			wordRay[count] = word;
 			count++;
 		}
+
+		wordRay[count2] = sentence;
 
 	
 	}
