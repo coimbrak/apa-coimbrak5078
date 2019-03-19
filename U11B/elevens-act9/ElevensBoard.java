@@ -103,7 +103,7 @@ public class ElevensBoard extends Board {
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
                 if(selectedCards.size() == 3){
-                        return cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCa$
+                        return cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue() + cardAt(selectedCards.get(2)).pointValue() == 0;
                 }
 	}
 }
