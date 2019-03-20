@@ -55,12 +55,12 @@ public class ElevensBoard extends Board {
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
     		if(selectedCards.size() == 2){
-      			return containsPairSum11(List<Integer> selectedCards);
+      			return containsPairSum11(selectedCards);
    		}
    		if(selectedCards.size() == 3){
-   		   	return containsJQK(List<Integer> selectedCards);
+   		   	return containsJQK(selectedCards);
     		}
-
+		return false;
 	}
 
 	/**
@@ -74,7 +74,38 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		return containsPairSum11(List<Integer> selectedCards) || containsJQK(List<Integer> selectedCards);
+	    ArrayList<Integer> myCards;
+	    myCards = new ArrayList<Integer>();
+	    int count = 0;
+	    for(int i = 0; i < BOARD_SIZE; i++){
+	      myCards.add(i);
+	      for(int n = 0; n < BOARD_SIZE; n++){
+	        myCards.add(n);
+	        if(containsPairSum11(myCards)){
+	          count++;
+		  myCards.clear();
+	        }
+	      }
+	    }
+	
+
+	    ArrayList<Integer> tripleCards;
+	    tripleCards = new ArrayList<Integer>();
+	    for(int a = 0; a < BOARD_SIZE; a++){
+	      tripleCards.add(a);
+	      for(int b = 0; b < BOARD_SIZE; b++){
+	        tripleCards.add(b);
+	        for(int m = 0; m < BOARD_SIZE; m++){
+	          tripleCards.add(m);
+	          if(containsJQK(tripleCards)){
+	            count++;
+		    tripleCards.clear();
+	          }
+	        }
+	      }
+	    }
+	
+	    return (count >= 0);
 	}
 
 	/**
@@ -90,6 +121,7 @@ public class ElevensBoard extends Board {
     		if(selectedCards.size() == 2){
       			return cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue() == 11;
     		}
+		return false;
 	}
 
 	/**
@@ -105,5 +137,6 @@ public class ElevensBoard extends Board {
                 if(selectedCards.size() == 3){
                         return cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue() + cardAt(selectedCards.get(2)).pointValue() == 0;
                 }
+		return false;
 	}
 }
