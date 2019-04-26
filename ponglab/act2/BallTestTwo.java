@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Kaila Coimbra
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +19,8 @@ class BallTestTwo extends Canvas implements Runnable
     setVisible(true);
 
     //instantiate a new Ball
+
+    ball = new Ball();
 
 
     //test the Ball thoroughly

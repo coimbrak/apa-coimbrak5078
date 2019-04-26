@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -- 
+//Name -- Kaila Coimbra 
 
 import static java.lang.System.*;
 import java.awt.Color;

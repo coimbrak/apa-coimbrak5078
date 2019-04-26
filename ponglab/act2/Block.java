@@ -20,7 +20,7 @@ public class Block implements Locatable
 	yPos = 0;
 	width = 0;
 	height = 0;
-
+	setColor(Color.BLACK);
   }
 
   //add other Block constructors - x , y , width, height, color
@@ -100,11 +100,7 @@ public class Block implements Locatable
    
   public boolean equals(Object obj)
   {
-
-
-
-
-    return false;
+     return (getWidth() == ((Block)obj).getWidth() && getHeight() == ((Block)obj).getHeight());
   }   
 
   //add the other get methods
@@ -128,6 +124,11 @@ public class Block implements Locatable
   public int getHeight()
   {
 	return height;
+  }
+
+  public Color getColor()
+  {
+	return color;
   }
 
   
