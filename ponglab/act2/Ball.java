@@ -23,13 +23,16 @@ public class Ball extends Block
 
 public Ball(int x, int y)
 {
-  setXSpeed(x);
-  setYSpeed(y);
+  super(x,y);
+  setXSpeed(3);
+  setYSpeed(1);
 }
 
 public Ball(int x, int y, int w, int h)
 {
   super(x,y,w,h);
+  setXSpeed(3);
+  setYSpeed(1);
 }
 
 public Ball(int x, int y, int w, int h, Color col)
@@ -37,6 +40,13 @@ public Ball(int x, int y, int w, int h, Color col)
   super(x,y,w,h,col);
   setXSpeed(3);
   setYSpeed(1);
+}
+
+public Ball(int x, int y, int w, int h, int xS, int yS)
+{
+  this(x,y,w,h);
+  setXSpeed(xS);
+  setYSpeed(yS);
 }
 
 public Ball(int x, int y, int w, int h, Color col, int xS, int yS)
@@ -76,32 +86,54 @@ public void setYSpeed(int y)
     two.draw(window);
     
  
-   //setY
+    //setY
 
     //draw the ball at its new location
   }
    
+
   public boolean equals(Object obj)
   {
-         return (getWidth() == ((Block)obj).getWidth() && getHeight() == ((Block)obj).getHeight());
-  }   
+	Ball rhs = (Ball)obj; 
+        return (super.equals(rhs) && xSpeed == rhs.getXSpeed() && ySpeed == rhs.getYSpeed());
+  }
 
   //add the get methods
 
 
+  public int getX(){
+        return super.getX();
+  }
+
+  public int getY(){
+        return super.getY();
+  }
+
+  public int getWidth(){
+        return super.getWidth();
+  }
+
+  public int getHeight(){
+        return super.getHeight();
+  }
+
+  public Color getColor(){
+        return super.getColor();
+  }
+
   public int getXSpeed()
   {
-	return xSpeed;
+        return xSpeed;
   }
 
   public int getYSpeed()
   {
-	return ySpeed;
+        return ySpeed;
   }
 
   public String toString()
   {
-	return "" + xSpeed + " " + ySpeed;
+	return "x pos: " + getX() + ", y pos: " + getY() + ", width: " + getWidth() + ", height: " + getHeight() + ", color:" + getColor()+ ", x speed: "  + xSpeed + ", y speed: " + ySpeed;
   }
 
 

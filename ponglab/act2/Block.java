@@ -94,13 +94,15 @@ public class Block implements Locatable
 
   public void draw(Graphics window, Color col)
   {
-
+    window.setColor(col);
+    window.fillRect(getX(), getY(), getWidth(), getHeight());
 
   }
    
   public boolean equals(Object obj)
   {
-     return (getWidth() == ((Block)obj).getWidth() && getHeight() == ((Block)obj).getHeight());
+    Block rhs = (Block)obj;
+    return (xPos == rhs.getX() && yPos == rhs.getY() && width == rhs.getWidth() && height == rhs.getHeight() && color == rhs.getColor());
   }   
 
   //add the other get methods
