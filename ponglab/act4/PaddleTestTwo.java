@@ -31,8 +31,8 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
                 
     //instantiate a left Paddle
                 
-	leftPaddle = new Paddle(0,400,10,80,Color.BLUE, 6);
-	rightPaddle = new Paddle(460,50,10,80,Color.GREEN, 6);
+	leftPaddle = new Paddle(0,360,10,80,Color.BLUE, 6);
+	rightPaddle = new Paddle(460,10,10,80,Color.GREEN, 6);
                 
                 
     //instantiate a right Paddle
@@ -76,7 +76,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
     if (keys[0])
     {
       //move left paddle up and draw it on the window
-	if(leftPaddle.getY() <= 450){
+	if(leftPaddle.getY() <= 380){
 	      leftPaddle.moveUpAndDraw(window);
 	}
     }
@@ -90,7 +90,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
     }
     if (keys[2])
     {
-	if(rightPaddle.getY() <= 450){
+	if(rightPaddle.getY() <= 380){
 		rightPaddle.moveUpAndDraw(window);
 	}
     }

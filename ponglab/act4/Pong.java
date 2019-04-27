@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Kaila Coimbra
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,7 +25,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
   public Pong()
   {
     //set up all variables related to the game
-
+	ball = new Ball(50,50,10,10,Color.BLACK,2,0);
+	leftPaddle = new Paddle(0,100,10,80,Color.BLUE,8);
+	rightPaddle = new Paddle(760,200,10,80,Color.GREEN, 8);
 
 
 
@@ -61,7 +63,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
     ball.moveAndDraw(graphToBack);
     leftPaddle.draw(graphToBack);
     rightPaddle.draw(graphToBack);
-
+    graphToBack.setColor(Color.BLACK);
 
     //see if ball hits left wall or right wall
     if (!(ball.getX()>=10 && ball.getX()<=780))
@@ -72,12 +74,26 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
                 
     //see if the ball hits the top or bottom wall 
-
+    if (!(ball.getY()>=10 && ball.getY()<=780))
+    {
+	ball.setXSpeed(0);
+	ball.setYSpeed(0);
+    }
 
 
 
     //see if the ball hits the left paddle
-                
+     
+    if((ball.getX()<=leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getXSpeed())
+	 && (ball.getY()>=leftPaddle.getY() 
+	&& ball.getY()<=leftPaddle.getY() + leftPaddle.getHeight() || ball.getY() + ball.getHeight() >= leftPaddle.getY() && ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())))
+    {
+	if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+		ball.setYSpeed(ball.getYSpeed() * -1);
+	else
+		ball.setXSpeed(ball.getXSpeed() * -1);
+    }
+           
                 
                 
     //see if the ball hits the right paddle
@@ -89,17 +105,17 @@ public class Pong extends Canvas implements KeyListener, Runnable
     //see if the paddles need to be moved
 
 
+    if(keys[0])
+	leftPaddle.moveDownAndDraw(graphToBack);
 
+    if(keys[1])
+	leftPaddle.moveUpAndDraw(graphToBack);
 
+    if(keys[2])
+	rightPaddle.moveDownAndDraw(graphToBack);
 
-
-
-
-
-
-
-
-
+    if(keys[3])
+	rightPaddle.moveUpAndDraw(graphToBack);
 
 
                 
