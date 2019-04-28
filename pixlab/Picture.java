@@ -245,14 +245,65 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+
+    System.out.println("nested loop count is " + count);
   }
+
+
+  //  Method to mirror the arms of the snowman
+  public void mirrorArms()
+  {
+	int mirrorPoint = 191;
+	Pixel top1Pixel = null;
+	Pixel bot1Pixel = null;
+	Pixel top2Pixel = null;
+	Pixel bot2Pixel = null;
+	Pixel[][] pixels = this.getPixels2D();
+
+	for (int col = 102; col < 173; col++){
+		for(int row = 156; row < mirrorPoint; row++){
+			top1Pixel = pixels[row][col];
+			bot1Pixel = pixels[mirrorPoint - row + mirrorPoint][col];
+			bot1Pixel.setColor(top1Pixel.getColor());
+		}
+	}
+
+	mirrorPoint = 195;
+        for (int col = 238; col < 297; col++){
+                for(int row = 171; row < mirrorPoint; row++){
+                        top2Pixel = pixels[row][col];
+                        bot2Pixel = pixels[mirrorPoint - row + mirrorPoint][col];
+                        bot2Pixel.setColor(top2Pixel.getColor());
+                }
+        }
+  
+  }
+
+  //  Method to mirror the seagull
+  public void mirrorGull()
+  {
+	int mirrorPoint = 345;
+	Pixel leftPixel = null;
+	Pixel rightPixel = null;
+	Pixel[][] pixels = this.getPixels2D();
+
+	for(int row = 235; row < 322; row++){
+		for(int col = 240; col < mirrorPoint; col++){
+			leftPixel = pixels[row][col];
+			rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+			rightPixel.setColor(leftPixel.getColor());
+		}
+	}
+  } 
+
+
   
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
@@ -335,10 +386,24 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+/*    Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
+    Picture temple = new Picture("temple.jpg");
+    temple.mirrorTemple();
+    temple.explore();
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms(); 
+    snowman.explore();
+*/
+
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.mirrorGull();
+    seagull.explore();
+
   }
   
 } // this } is the end of class Picture, put all new methods before this
