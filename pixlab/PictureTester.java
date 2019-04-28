@@ -42,6 +42,20 @@ public class PictureTester
 	Picture beach = new Picture("beach.jpg");
 	beach.grayscale();
 	beach.explore();
+	beach.grayscaleAverage();
+        beach.explore();
+	beach.grayscaleLightness();
+        beach.explore();
+	beach.grayscaleLuminosity();
+        beach.explore();
+  }
+
+  public static void testFixUnderwater()
+  {
+	Picture water = new Picture("water.jpg");
+	water.explore();
+	water.fixUnderwater();
+	water.explore();
   }
 
 
@@ -80,6 +94,15 @@ public class PictureTester
     Picture caterpillar = new Picture("caterpillar.jpg");
     caterpillar.mirrorHorizontalBotToTop();
     caterpillar.explore();
+  }
+
+  
+  //  Method to test mirrorDiagonal
+  public static void testMirrorDiagonal()
+  {
+	Picture beach = new Picture("beach.jpg");
+	beach.mirrorDiagonal();
+	beach.explore();
   }
 
 
@@ -155,13 +178,13 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+/*    testZeroBlue();
     testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     testNegate();
     testGrayscale();
-    //testFixUnderwater();
+    testFixUnderwater();
     testMirrorVertical();
     testMirrorVerticalRightToLeft();
     testMirrorHorizontal();
@@ -171,10 +194,11 @@ public class PictureTester
     testMirrorArms();
     testMirrorGull();
     testSecondCopy();
-    //testMirrorDiagonal();
+*/    
+    testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    //testEdgeDetection();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

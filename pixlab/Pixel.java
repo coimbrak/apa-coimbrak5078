@@ -53,6 +53,30 @@ public class Pixel
    * Method to get the x location of this pixel.  
    * @return the x location of the pixel in the picture
    */
+
+  public void setGrayAverage(){
+	int gray = (this.getRed() + this.getGreen() + this.getBlue())/3;
+	updatePicture(this.getAlpha(),gray,gray,gray);
+  }
+
+
+  public void setGrayLightness(){
+	int max1 = Math.max(this.getRed(), this.getGreen());
+	int max2 = Math.max(max1, this.getBlue());
+        int min1 = Math.min(this.getRed(), this.getGreen());
+        int min2 = Math.min(min1, this.getBlue());
+	int gray = (max2 + min1)/2;
+        updatePicture(this.getAlpha(),gray,gray,gray);
+  }
+
+
+  public void setGrayLuminosity(){
+	int gray = (int)(0.21*this.getRed() + 0.72*this.getGreen() + 0.07*this.getBlue());
+	updatePicture(this.getAlpha(),gray,gray,gray);
+  }
+
+
+
   public int getX() { return x; }
   
   /**

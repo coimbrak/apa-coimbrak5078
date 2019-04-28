@@ -147,6 +147,60 @@ public class Picture extends SimplePicture
   }
 
 
+  // Method to make the fish easier to see
+  public void fixUnderwater()
+  {
+	Pixel[][] pixels = this.getPixels2D();
+	for(Pixel[] rowArray : pixels){
+		for(Pixel pixelObj : rowArray){
+			if(pixelObj.getRed() < 20 && pixelObj.getCol() < 479 &&
+			  pixelObj.getRow() < 153){
+				pixelObj.setBlue(255);
+				pixelObj.setGreen(pixelObj.getGreen() + 20);
+			}
+		}
+	}
+  }
+
+
+  // Alternative methods to gray scale
+  public void grayscaleAverage() 
+  {
+        Pixel[][] pixels = this.getPixels2D();
+        for(Pixel[] rowArray : pixels)
+        {
+                for(Pixel pixelObj : rowArray)
+                {
+			pixelObj.setGrayAverage();
+                }
+        }
+  }
+
+  public void grayscaleLightness()
+  {
+        Pixel[][] pixels = this.getPixels2D();
+        for(Pixel[] rowArray : pixels)
+        {
+                for(Pixel pixelObj : rowArray)
+                {
+                        pixelObj.setGrayLightness();
+                }
+        }
+  }
+
+  public void grayscaleLuminosity()
+  {
+        Pixel[][] pixels = this.getPixels2D();
+        for(Pixel[] rowArray : pixels)
+        {
+                for(Pixel pixelObj : rowArray)
+                {
+                        pixelObj.setGrayLuminosity();
+                }
+        }
+  }
+
+
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -226,8 +280,24 @@ public class Picture extends SimplePicture
   }
 
 
-
-
+  //mirror a picture diagonally
+  public void mirrorDiagonal()
+  {
+	Pixel[][] pixels = this.getPixels2D();
+	Pixel lowerPixel = null;
+	Pixel upperPixel = null;
+	int dimension = Math.min(pixels.length, pixels[0].length);
+	for(int row = 0; row < dimension; row++)
+	{
+		for(int col = 0; col <= row; col++)
+		{
+			upperPixel = pixels[row][col];
+			lowerPixel = pixels[dimension - 1 - row][dimension - 1 - col];
+			lowerPixel.setColor(upperPixel.getColor());
+		}
+	}
+  }
+								
 
   
   /** Mirror just part of a picture of a temple */
@@ -433,6 +503,23 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.WHITE);
       }
     }
+
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    Pixel[][] pixelsV = this.getPixels2D();
+    Color botColor = null;
+	for(int col = 0; col < pixelsV[0].length; col++){
+		for(int row = 0; row < pixelsV.length-1; row++){
+			topPixel = pixelsV[row][col];
+			botPixel = pixelsV[row+1][col];
+			botColor = botPixel.getColor();
+			if(topPixel.colorDistance(botColor) > edgeDist)
+				botPixel.setColor(Color.BLACK);
+			else
+				botPixel.setColor(Color.WHITE);
+		}
+	}
+
   }
   
   
@@ -464,11 +551,11 @@ public class Picture extends SimplePicture
     Picture swan = new Picture("swan.jpg");
     Picture moon = new Picture("moon-surface.jpg");
     Picture robot = new Picture("robot.jpg");
-    Picture arch = new Picture("caterpillar.jpg");
+    Picture water = new Picture("water.jpg");
     swan.explore();
     robot.explore();
     moon.explore();
-    arch.explore();
+    water.explore();
 
   }
   
