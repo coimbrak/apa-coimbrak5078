@@ -101,6 +101,16 @@ public class PictureTester
 	seagull.explore();
   }
 
+
+  //  Method to test secondCopy
+  public static void testSecondCopy()
+  {
+	Picture beach = new Picture("beach.jpg");
+	Picture seagull = new Picture("seagull.jpg");
+	beach.secondCopy(seagull,235,240,321,345,235,240);
+	beach.explore();
+  }
+
   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
@@ -118,6 +128,17 @@ public class PictureTester
     canvas.createCollage();
     canvas.explore();
   }
+
+  //  Method to test myCollage
+  public static void testMyCollage()
+  {
+	Picture moon = new Picture("moon-surface.jpg");
+	moon.myCollage();
+	moon.explore();
+  }
+
+
+
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -145,9 +166,11 @@ public class PictureTester
     testMirrorVerticalRightToLeft();
     testMirrorHorizontal();
     testMirrorHorizontalBotToTop();
+    testMyCollage();
     //testMirrorTemple();
     testMirrorArms();
     testMirrorGull();
+    testSecondCopy();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();

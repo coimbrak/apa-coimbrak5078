@@ -336,6 +336,32 @@ public class Picture extends SimplePicture
     }   
   }
 
+
+  public void secondCopy(Picture fromPic, int startFRow, int startFCol, 
+    int endFRow, int endFCol, int startTRow, int startTCol)
+  {
+	Pixel fromPixel = null;
+	Pixel toPixel = null;
+	Pixel[][] toPixels = this.getPixels2D();
+	Pixel[][] fromPixels = fromPic.getPixels2D();
+
+	for (int fromRow = startFRow, toRow = startTRow; 
+	  fromRow < endFRow && toRow < toPixels.length; fromRow++, toRow++)
+	{
+		for(int fromCol = startFCol, toCol = startTCol; 
+		  fromCol < endFCol && toCol < fromPixels[0].length; 
+		  fromCol++, toCol++)
+		{
+			fromPixel = fromPixels[fromRow][fromCol];
+			toPixel = toPixels[toRow][toCol];
+			toPixel.setColor(fromPixel.getColor());
+		}
+	}
+  
+  }
+
+
+
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
@@ -352,6 +378,35 @@ public class Picture extends SimplePicture
     this.mirrorVertical();
     this.write("collage.jpg");
   }
+
+
+  //  Method to create my Collage
+  public void myCollage()
+  {
+	Picture robot = new Picture("robot.jpg");
+	Picture bigRobot = robot.scale(1.60,1.60);
+	Picture caterpillar = new Picture("caterpillar.jpg");
+	Picture smallCater = caterpillar.scale(0.48,0.48);
+        Picture mirrorHCater = new Picture(smallCater);
+	mirrorHCater.mirrorHorizontal();
+        Picture mirrorVCater = new Picture(smallCater);
+        mirrorVCater.mirrorVertical();
+	Picture negativeRobot = new Picture(bigRobot);
+	negativeRobot.negate();
+	Picture blueRobot = new Picture(bigRobot);
+	blueRobot.keepOnlyBlue();
+	this.copy(negativeRobot,0,0);
+	this.copy(bigRobot,bigRobot.getHeight(),0);
+	this.copy(blueRobot,2*bigRobot.getHeight(),0);
+	this.copy(caterpillar,this.getHeight()-147, 0);
+	this.copy(mirrorHCater,this.getHeight()-mirrorHCater.getHeight(),
+	  caterpillar.getWidth());
+        this.copy(mirrorVCater,this.getHeight()-mirrorVCater.getHeight(),
+          caterpillar.getWidth()+mirrorHCater.getWidth());
+	this.write("myCollage.jpg");
+		
+  }
+
   
   
   /** Method to show large changes in color 
@@ -397,12 +452,23 @@ public class Picture extends SimplePicture
     snowman.explore();
     snowman.mirrorArms(); 
     snowman.explore();
-*/
-
     Picture seagull = new Picture("seagull.jpg");
     seagull.explore();
     seagull.mirrorGull();
     seagull.explore();
+*/
+
+    Picture beach = new Picture("beach.jpg");
+    beach.createCollage();
+    beach.explore();
+    Picture swan = new Picture("swan.jpg");
+    Picture moon = new Picture("moon-surface.jpg");
+    Picture robot = new Picture("robot.jpg");
+    Picture arch = new Picture("caterpillar.jpg");
+    swan.explore();
+    robot.explore();
+    moon.explore();
+    arch.explore();
 
   }
   
