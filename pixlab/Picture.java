@@ -373,6 +373,38 @@ public class Picture extends SimplePicture
 	}
   } 
 
+  //  Method to refactor all of the mirror code (Challenge 4)
+  public void mirrorRectangle(int x1, int y1, int x2, int y2, boolean vertical)
+  {
+	if(vertical){
+		int mirrorPoint = y2;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		for(int row = x1; row < x2; row++){
+			for(int col = y1; col < mirrorPoint; col++){
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+	}
+	else{
+		int mirrorPointH = x2;
+                Pixel topPixel = null;
+                Pixel botPixel = null;
+                Pixel[][] pixelsH = this.getPixels2D();
+                for(int col = y1; col < y2; col++){
+                        for(int row = x1; row < mirrorPointH; row++){
+                   		topPixel = pixelsH[row][col];
+				botPixel = pixelsH[mirrorPointH - row + mirrorPointH][col];
+				topPixel.setColor(botPixel.getColor());
+                        }
+                }
+
+	}
+  }
+
 
   
   /** copy from the passed fromPic to the
@@ -514,13 +546,34 @@ public class Picture extends SimplePicture
 			botPixel = pixelsV[row+1][col];
 			botColor = botPixel.getColor();
 			if(topPixel.colorDistance(botColor) > edgeDist)
-				botPixel.setColor(Color.BLACK);
+				topPixel.setColor(Color.BLACK);
 			else
-				botPixel.setColor(Color.WHITE);
+				topPixel.setColor(Color.WHITE);
 		}
 	}
 
   }
+
+
+  //  Method for another algorithm for edge detection
+  public void edgeDetection2()
+  {
+    Pixel pix = null;
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0;
+           col < pixels[0].length; col++)
+      {
+	   pix = pixels[row][col];
+	   if(pix.getRed() > 50 && pix.getGreen() > 50 && pix.getBlue() > 50)
+		pix.setColor(Color.WHITE);
+	   else
+		pix.setColor(Color.BLACK);
+      }
+    }
+
+  } 
   
   
   /* Main method for testing - each class in Java can have a main 

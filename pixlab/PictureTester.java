@@ -124,6 +124,14 @@ public class PictureTester
 	seagull.explore();
   }
 
+  //  Method to test mirrorRectangle
+  public static void testMirrorRectangle()
+  {
+	Picture seagull = new Picture("seagull.jpg");
+	seagull.mirrorRectangle(235,240,321,345,true);
+	seagull.explore();
+  }
+
 
   //  Method to test secondCopy
   public static void testSecondCopy()
@@ -170,6 +178,15 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection2();
+    swan.explore();
+  }
+
+
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -190,16 +207,16 @@ public class PictureTester
     testMirrorHorizontal();
     testMirrorHorizontalBotToTop();
     testMyCollage();
-    //testMirrorTemple();
+*/    //testMirrorTemple();
     testMirrorArms();
     testMirrorGull();
     testSecondCopy();
-*/    
+    testMirrorRectangle();    
     testMirrorDiagonal();
     //testCollage();
     //testCopy();
     testEdgeDetection();
-    //testEdgeDetection2();
+    testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
