@@ -9,9 +9,12 @@ CLASSES = \
 	Locatable.java \
 	Ball.java \
 	BlinkyBall.java \
-	SpeedyBall.java \
+	SpeedUpBall.java \
 	Paddle.java \
 	Pong.java \
+	Wall.java \
+	Collidable.java \
+	Score.java \
 	TheGame.java
 
 default: classes

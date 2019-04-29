@@ -1,24 +1,28 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name - Kaila Coimbra
-
+ 
 import javax.swing.JFrame;
 import java.awt.Component;
 
-public class TheGame extends JFrame
+public class Tester extends JFrame
 {
   private static final int WIDTH = 800;
   private static final int HEIGHT = 600;
 
-  public TheGame()
+  public Tester()
   {
-    super("PONG");
+    super("PONG TESTER");
     setSize(WIDTH,HEIGHT);
 
-    Pong game = new Pong(700,500);
+    getContentPane().add(new BlockTestTwo());
 
-    ((Component)game).setFocusable(true);
-    getContentPane().add(game);
+    //uncomment when you are ready to test the Ball
+    getContentPane().add(new BallTestTwo());
+
+    PaddleTestTwo padTest = new PaddleTestTwo();
+    ((Component)padTest).setFocusable(true);
+    getContentPane().add(padTest);
 
     setVisible(true);
 
@@ -27,6 +31,6 @@ public class TheGame extends JFrame
 
   public static void main( String args[] )
   {
-    TheGame run = new TheGame();
+    Tester run = new Tester();
   }
 }

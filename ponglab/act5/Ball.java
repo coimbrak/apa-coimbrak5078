@@ -105,8 +105,8 @@ public boolean didCollideTop(Object obj)
     Block other = (Block)obj;
     if((getX()<=other.getX() + other.getWidth() + Math.abs(getXSpeed())
          && (getY()<=other.getY() && getY()<=other.getY() +
-         other.getHeight() || getY() + getHeight() <= other.getY() &&
-         getY() + getHeight() < other.getY() + other.getHeight())))
+         other.getHeight() || getY() + getHeight() >= other.getY()+other.getHeight() &&
+         getY() < other.getY() + other.getHeight())))
     {
         if(getYSpeed() < 0)
                 return true;

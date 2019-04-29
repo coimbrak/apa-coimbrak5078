@@ -12,7 +12,10 @@ CLASSES = \
 	PaddleTestOne.java \
 	PaddleTestTwo.java \
 	Pong.java \
+	Collidable.java \
+	Wall.java \
 	Tester.java \
+	Score.java\
 	TheGame.java
 
 default: classes
