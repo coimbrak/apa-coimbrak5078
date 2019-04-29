@@ -103,7 +103,9 @@ public class Picture extends SimplePicture
 		{	
 
 			pixelObj = pixels[row][col];
+	
 
+//find bounds
 			if(row == 0){
                                 leftPix = pixels[row][col-1];
                                 rightPix = pixels[row][col+1];
