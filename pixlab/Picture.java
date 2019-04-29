@@ -84,6 +84,100 @@ public class Picture extends SimplePicture
     return output;
     
   }
+
+
+
+
+  //  Pix Lab Assessment - blur method
+  public void blur(int x,int y,int w,int h)
+  {
+	Pixel pixelObj = null;
+        Pixel leftPix = null;
+        Pixel rightPix = null;
+        Pixel topPix = null;
+        Pixel botPix = null;     
+	Pixel[][] pixels = this.getPixels2D();
+	for(int row = x; row < x + w + 1; row++)
+	{
+		for(int col = y; col < y + h + 1; col++)
+		{	
+
+			pixelObj = pixels[row][col];
+
+			if(row == 0){
+                                leftPix = pixels[row][col-1];
+                                rightPix = pixels[row][col+1];
+                                botPix = pixels[row+1][col];				
+				topPix = pixelObj;
+			}
+
+			if(row == this.getHeight()){
+                                leftPix = pixels[row][col-1];
+                                rightPix = pixels[row][col+1];
+                                topPix = pixels[row-1][col];
+				botPix = pixelObj;
+			}
+
+			if(col == 0){
+                                rightPix = pixels[row][col+1];
+                                topPix = pixels[row-1][col];
+                                botPix = pixels[row+1][col];
+				leftPix = pixelObj;
+			}
+
+			if(col == this.getWidth()){
+                                leftPix = pixels[row][col-1];
+                                topPix = pixels[row-1][col];
+                                botPix = pixels[row+1][col];
+				rightPix = pixelObj;
+			}
+                        if(row == 0 && col == 0){
+                                leftPix = pixelObj;
+                                rightPix = pixels[row][col+1];
+                                topPix = pixelObj;
+                                botPix = pixels[row+1][col];
+                        }
+                        if(row == 0 && col == this.getWidth()){
+                                leftPix = pixels[row][col-1];
+                                rightPix = pixelObj;
+                                topPix = pixelObj;
+                                botPix = pixels[row+1][col];
+                        }
+                        if(row == this.getHeight() && col == this.getWidth()){
+                                leftPix = pixels[row][col-1];
+                                rightPix = pixelObj;
+                                topPix = pixels[row-1][col];
+                                botPix = pixelObj;
+                        }
+			if(row == this.getHeight() && col == 0){
+                                leftPix = pixelObj;
+                                rightPix = pixels[row][col+1];
+                                topPix = pixels[row-1][col];
+                                botPix = pixelObj;
+			}
+			else{
+	        		leftPix = pixels[row][col-1];
+        			rightPix = pixels[row][col+1];
+        			topPix = pixels[row-1][col];
+        			botPix = pixels[row+1][col];
+			}
+
+			int avgRed = (leftPix.getRed() + rightPix.getRed() + 
+			  topPix.getRed() + botPix.getRed())/4;
+                        int avgGreen = (leftPix.getGreen() + rightPix.getGreen() +
+                          topPix.getGreen() + botPix.getGreen())/4;
+			int avgBlue = (leftPix.getBlue() + rightPix.getBlue() +
+                          topPix.getBlue() + botPix.getBlue())/4;
+			pixelObj.setRed(avgRed);
+			pixelObj.setGreen(avgGreen);
+			pixelObj.setBlue(avgBlue);
+
+		}
+	}
+  }
+
+
+
   
   /** Method to set the blue to 0 */
   public void zeroBlue()
