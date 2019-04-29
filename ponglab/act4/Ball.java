@@ -130,7 +130,8 @@ public boolean didCollideBottom(Object obj)
                 return false;
     }
     return false;
-}             
+}        
+
            
   //add the set methods
    

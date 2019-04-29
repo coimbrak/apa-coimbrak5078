@@ -99,8 +99,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	Ball b = new Ball(getX(), getY(), getWidth(), getHeight(), Color.WHITE);
         b.draw(window);
 	//ball.setColor(Color.WHITE);
-	ball.setX(400);
-	ball.setY(300);
+	ball.setX(width/2);
+	ball.setY(height/2);
 	//ball.setColor(Color.BLACK);
     }
     else if(ball.didCollideRight(rightWall)){
