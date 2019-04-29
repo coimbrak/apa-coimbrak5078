@@ -207,7 +207,7 @@ public class PictureTester
     testMirrorHorizontal();
     testMirrorHorizontalBotToTop();
     testMyCollage();
-*/    //testMirrorTemple();
+    testMirrorTemple();
     testMirrorArms();
     testMirrorGull();
     testSecondCopy();
@@ -217,7 +217,7 @@ public class PictureTester
     //testCopy();
     testEdgeDetection();
     testEdgeDetection2();
-    //testChromakey();
+*/    //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
