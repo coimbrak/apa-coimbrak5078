@@ -13,18 +13,26 @@ import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
   private Ship ship;
-  private Alien alienOne;
-  private Alien alienTwo;
+//  private Alien alienOne;
+//  private Alien alienTwo;
+  private Ammo ammo;
+  private AlienHorde horde;
+  private Bullets shots;
+
+  private List<Ammo> bulletsList;
+
 
   /* uncomment once you are ready for this part
    *
    private AlienHorde horde;
    private Bullets shots;
   */
+
 
   private boolean[] keys;
   private BufferedImage back;
@@ -36,10 +44,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     keys = new boolean[5];
 
 	ship = new Ship();
-	alienOne = new Alien(200,20,30,30,0);
-	alienTwo = new Alien(300,20,30,30,0);
-
-    //instantiate other instance variables
+//	alienOne = new Alien(200,20,30,30,0);
+//	alienTwo = new Alien(300,20,30,30,0);
+	ammo = new Ammo();
+	horde = new AlienHorde(20);
+	shots = new Bullets();
+//	bulletsList = new ArrayList<Ammo>();
+	bulletsList = shots.getList();
+  //instantiate other instance variables
     //Ship, Alien
 
     this.addKeyListener(this);
@@ -72,10 +84,37 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     graphToBack.setColor(Color.BLACK);
     graphToBack.fillRect(0,0,800,600);
     ship.draw(graphToBack);
-    alienOne.draw(graphToBack);
-    alienTwo.draw(graphToBack);
 
-	
+    horde.drawEmAll(graphToBack);
+    horde.moveEmAll();
+//    alienOne.draw(graphToBack);
+//    alienTwo.draw(graphToBack);
+
+/*    if(ammo.getY() > 0){
+	ammo.draw(graphToBack);
+	ammo.move("SHOOT");
+    }
+*/
+
+	for(int i = 0; i < bulletsList.size(); i++){
+		bulletsList.get(i).draw(graphToBack);
+		bulletsList.get(i).move("SHOOT");
+	}
+
+    shots.drawEmAll(graphToBack);
+    shots.moveEmAll();
+
+//	horde.removeDeadOnes(shots);
+
+
+/*
+    for(int i = 0; i < horde.size(); i++){
+	if(ammo.getY() == horde.get(i).getY()+horde.get(i).getHeight() && ammo.getX() >
+         horde.get(i).getWidth() - ammo.getX() && ammo.getX() < horde.get(i).getX() +
+         horde.get(i).getWidth())
+		horde.remove(i);
+    }
+*/
 
     if(keys[0] == true)
     {
@@ -96,6 +135,27 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     {
       ship.move("DOWN");
     }
+    if(keys[4] == true)
+    {
+
+	shots.add(new Ammo(ship.getX() + ship.getWidth()/2, ship.getY(), 1));
+
+/*      ammo = new Ammo(ship.getX() + ship.getWidth()/2,ship.getHeight(),1);
+      ammo.setX(ship.getX() + ship.getWidth()/2 - ammo.getWidth()/2);
+      ammo.setY(ship.getY());
+      keys[4] = false;
+
+	for(int i = 0; i < bulletsList.size(); i++){
+		Ammo one = bulletsList.get(i);
+		one.setX(ship.getX() + ship.getWidth()/2 - one.getWidth()/2);
+		one.setY(ship.getY());
+		one.move("SHOOT");
+		keys[4] = false;
+	}
+*/
+    }
+
+//	horde.removeDeadOnes(bulletsList);
 
     //add code to move Ship, Alien, etc.
 

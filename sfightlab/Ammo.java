@@ -14,7 +14,7 @@ public class Ammo extends MovingThing
 
   public Ammo()
   {
-    this(0,0,0);
+    this(0,0,5);
   }
 
   public Ammo(int x, int y)
@@ -44,18 +44,44 @@ public class Ammo extends MovingThing
 
   public void draw( Graphics window )
   {
+    window.setColor(Color.YELLOW);
+    window.fillRect(getX(), getY(), getWidth(), getHeight());
 
     //add code to draw the ammo
   }
 
+/*
+  public int getX()
+  {
+    return super.getX();
+  }
+
+  public int getY()
+  {
+    return super.getY();
+  }
+
+  public int getWidth()
+  {
+    return super.getWidth();
+  }
+
+  public int getHeight()
+  {
+    return super.getHeight();
+  }
+*/
 
   public void move( String direction )
   {
+	if(direction.equals("SHOOT"))
+		setY(getY() - speed);
+
     //add code to draw the ammo
   }
 
   public String toString()
   {
-    return "";
+    return this.toString() + " " + speed;
   }
 }

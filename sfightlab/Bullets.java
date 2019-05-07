@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Kaila Coimbra
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,28 +16,43 @@ public class Bullets
 
   public Bullets()
   {
+	ammo = new ArrayList<Ammo>();
   }
 
   public void add(Ammo al)
   {
+	ammo.add(al);
   }
 
   //post - draw each Ammo
   public void drawEmAll( Graphics window )
   {
+//	ammo.draw(window);
+        for(int i = 0; i < ammo.size(); i++){
+                Ammo one = ammo.get(i);
+                if(one.getY() > 0)
+			one.draw(window);
+	}
   }
 
   public void moveEmAll()
   {
+        for(int i = 0; i < ammo.size(); i++){
+                Ammo one = ammo.get(i);
+                if(one.getY() > 0)
+			one.move("SHOOT");
+	}
   }
 
   public void cleanEmUp()
   {
+	for(int i = 0; i < ammo.size(); i++)
+		ammo.remove(i);
   }
 
   public List<Ammo> getList()
   {
-    return null;
+    return ammo;
   }
 
   public String toString()
