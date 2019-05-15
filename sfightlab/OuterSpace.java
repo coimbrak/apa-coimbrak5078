@@ -1,3 +1,4 @@
+
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name - Kaila Coimbra
@@ -104,7 +105,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     shots.drawEmAll(graphToBack);
     shots.moveEmAll();
 
-//	horde.removeDeadOnes(shots);
+	//horde.removeDeadOnes(bulletsList, graphToBack);
+
+	if(horde.removeDeadOnes(bulletsList,graphToBack)){
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.drawString("GAME OVER",50,50);
+		ship.setWidth(0);
+		ship.setHeight(0);
+		shots.cleanEmUp();
+		for(int i = 0; i < horde.getList().size(); i++)
+			horde.getList().remove(i);
+	}
+
+
+
 
 
 /*
@@ -116,22 +130,22 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     }
 */
 
-    if(keys[0] == true)
+    if(keys[0] == true && ship.getX() > 0)
     {
       ship.move("LEFT");
     }
 
-    if(keys[1] == true)
+    if(keys[1] == true && ship.getX() < 800 - ship.getWidth())
     {
       ship.move("RIGHT");
     }
 
-    if(keys[2] == true)
+    if(keys[2] == true && ship.getY() > 400)
     {
       ship.move("UP");
     }
 
-    if(keys[3] == true)
+    if(keys[3] == true && ship.getY() < 570 - ship.getHeight())
     {
       ship.move("DOWN");
     }
@@ -139,7 +153,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     {
 
 	shots.add(new Ammo(ship.getX() + ship.getWidth()/2, ship.getY(), 1));
-
+	keys[4] = false;
 /*      ammo = new Ammo(ship.getX() + ship.getWidth()/2,ship.getHeight(),1);
       ammo.setX(ship.getX() + ship.getWidth()/2 - ammo.getWidth()/2);
       ammo.setY(ship.getY());

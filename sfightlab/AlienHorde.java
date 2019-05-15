@@ -13,14 +13,14 @@ import java.util.List;
 public class AlienHorde
 {
   private List<Alien> aliens;
+  private boolean gameEnd;
 
   public AlienHorde(int size)
   {
 	aliens = new ArrayList<Alien>();
-	for(int i = 0; i < size; i++){
-		Alien alien = new Alien();
-		add(alien);
-	}
+	Alien alien = new Alien();
+	add(alien);
+	gameEnd = false;
   }
 
   public void add(Alien al)
@@ -32,6 +32,11 @@ public class AlienHorde
 		}
 	}
   }
+
+  public List<Alien> getList(){
+	return aliens;
+  }
+
 
   public void drawEmAll( Graphics window )
   {
@@ -47,28 +52,89 @@ public class AlienHorde
 		one.setX(one.getX()+1);
 		if(one.getX() >= 800-one.getWidth()){
 			one.setX(0);
-			one.setY(one.getY() + 30);
+			one.setY(one.getY() + 40);
 		}
 		if(one.getY() >= 600-one.getHeight())
 			break;
 	}
   }
 
-  public void removeDeadOnes(List<Ammo> shots)
+  public boolean removeDeadOnes(List<Ammo> shots, Graphics window)
   {
+//   int count = 0;
+   for(int n = aliens.size() - 1; n >= 0; n--){
+      Alien alien = aliens.get(n);
 
-   for(int i = 0; i < shots.size(); i++){
-      for(int n = 0; n < aliens.size(); n++){
+      for(int i = shots.size() - 1; i >= 0; i--){
 	Ammo ammo = shots.get(i);
-	Alien alien = aliens.get(n);
-	if(ammo.getY() == alien.getY() + alien.getHeight() && ammo.getX() > alien.getWidth()
-          - ammo.getX() && ammo.getX() < alien.getX() + alien.getWidth())
+
+	if(ammo.getY() <= alien.getY() + alien.getHeight() && ammo.getY() >= alien.getY() &&
+         ammo.getX() > alien.getX() - ammo.getWidth() && ammo.getX() < alien.getX() +
+         alien.getWidth()){
 		aliens.remove(n);
 		shots.remove(i);
-      }
-   }
+		//count++;
+		break;
+	}
 
 /*
+        if(aliens.size() == 0 || alien.getY() >= 400 - alien.getHeight()){
+                gameOver(shots, window);
+                gameEnd = true;
+		System.out.println("game over");
+                window.setColor(Color.WHITE);
+                window.drawString("GAME OVER", 200, 200);
+                break;
+        }
+
+*/
+
+/* code for second half of if statement
+|| ship.getY() <=
+         alien.getY() + alien.getHeight() && ship.getY() >= alien.getY() && ship.getX() >
+         alien.getX() - ship.getWidth() && ship.getX() < alien.getX() + alien.getWidth()
+*/
+
+      }//second for loop
+
+
+        if(aliens.size() == 0 || alien.getY() >= 400 - alien.getHeight()){
+                gameOver(shots, window);
+                gameEnd = true;
+//                System.out.println("game over");
+//                window.setColor(Color.WHITE);
+//                window.drawString("GAME OVER", 200, 200);
+                break;
+        }
+
+
+  }//first for loop
+
+	return gameEnd;
+
+  }
+
+
+  public void gameOver(List<Ammo> shots, Graphics window)
+  {
+    for(int i = 0; i < shots.size(); i++){
+      for(int n = 0; n < aliens.size(); n++){
+	aliens.remove(n);
+	shots.remove(i);
+	break;
+//	window.setColor(Color.GREEN);
+//	window.setColor(Color.WHITE);
+//	System.out.println("GAME OVER");
+//	window.drawString("GAME OVER", 200, 200);
+//	ship.setWidth(0);
+//	ship.setHeight(0);
+//	break;
+      }
+    }
+  }
+
+
+/*  extra code for removeDeadOnes
     for(int i = 0; i < aliens.size(); i++){
         if(shots.getY() == aliens.get(i).getY() + aliens.get(i).getHeight() && shots.getX() >
          aliens.get(i).getWidth() - shots.getX() && shots.getX() < aliens.get(i).getX() +
@@ -84,7 +150,6 @@ public class AlienHorde
 */
 
 
-  }
 
   public String toString()
   {

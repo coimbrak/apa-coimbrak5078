@@ -56,6 +56,8 @@ public class Alien extends MovingThing
     return speed;
   }
 
+
+
   public void move(String direction)
   {
 	if(direction.equals("LEFT"))
