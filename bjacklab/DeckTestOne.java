@@ -1,7 +1,7 @@
-//Name -
-//Date -
-//Class -
-//Lab  - 
+//Name - Kaila Coimbra
+//Date - 5/16/19
+//Class - AP CSA, Period 4
+//Lab  - BlackJack Lab
 
 import static java.lang.System.*;
 import java.awt.Color;
