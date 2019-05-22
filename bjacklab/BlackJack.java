@@ -58,6 +58,12 @@ public class BlackJack
 
 			if(output.equals("y") && player.getHandValue() < 21){
 				player.addCardToHand(dealer.deal());
+				if(player.getHandValue() > 21){
+					out.println("\n\n*** PLAYER " + a + " ***");
+					out.println("\nFINAL HAND = " + player);
+                                        out.println("\nPlayer " + a + " has busted!");
+					hitTrue = false;
+				}
 			}
 			else{
 				out.println("\n\n*** PLAYER " + a + " ***");
@@ -78,9 +84,9 @@ public class BlackJack
 //	int dealerTotal = dealer.getHandValue();
 
 
-
+   out.println("\n\n\n******** ALL HANDS ********");
    for(int c = 1; c < players.size(); c++){
-    out.println("\n\nPLAYER " + c);
+    out.println("\nPLAYER " + c);
     out.println("Hand Value :: " + players.get(c).getHandValue() );
     out.println("Hand Size :: " + players.get(c).getHandSize() );
     out.println("Cards in Hand :: " + players.get(c).toString() );
